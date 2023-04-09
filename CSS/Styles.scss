@@ -1,0 +1,120 @@
+// Esto afecta a todo el html
+:root {
+  // Se crea una variable --color1
+  --color1: #f8b78b;
+  // Se crea una nueva variable --color2 para el color del número
+  --color2: #fcb173;
+}
+
+// Esto se pone que representa todo el archivo html, es para "formatearlo", hace que cualquier medida o relleno o margen que se halla añadido a la página sea las medidas reales, a primera vista parece que los elementos se hacen más pequeños, por lo mismo que al formatearlo elimina bordes y rellenos que ya estaban por default en el documento html
+html {
+  box-sizing: border-box;
+  // Aquí se empieza con las medidas rem, se le da la medida de las fuentes o tamaño de letras, por default se tiene el 100% que son 16px, al poner 62.5% se dice que las fuentes equivaldrán a 10px, de esta manera se convierte la equivalencia y 1 rem valdría 10px en vez de 16px
+  font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+// Ahora, se accede a Body
+body {
+  // Se le da una fuente a la letra
+  font-family: sans-serif;
+  // Se le da un color de fondo usando var() y se le pasa la variable creada previamente
+  background-color: var(--color1);
+  // Se le dice que tendrá imágenes de fondo, se pasan con url(), como son dos iguales, se pasan usando coma y se le pasa la otra dirección de la imagen
+  background-image: url(../img/fondoTop.svg), url(../img/fondoBotton.svg);
+  // Se le dice que no se quiere que los fondos se repitan, son dos, se pone dos veces
+  background-repeat: no-repeat, no-repeat;
+  // Ahora, se le dice en qué posición se desea los fondos, el primero se dice que la derecha lo empuje la mitad hacia la izquierda, y de abajo igual, pero lo empuja desde abajo, hacia arriba. Se usa una coma para afectar a la otra imagen de fondo
+  background-position: right 50vw bottom 50vh, left 50vw top 50vh;
+}
+
+.container {
+  // Se le da la organiación responsive con flex de izq a der como una sola fila
+  display: flex;
+  // Se justifica para centrar los elementos
+  justify-content: center;
+  // Se centra los items
+  align-items: center;
+  // Se ocupará el 100% de la pantalla, por eso se usa vh
+  height: 100vh;
+}
+// A partir de aquí, empieza la fiesta del sas
+.card {
+  background-color: white;
+  // Se le da un ancho
+  width: 328px;
+  // Se le da un radio curvo
+  border-radius: 16px;
+  // Se le dice que a la carta, cuando se desborda, en este caso la imagen de arriba, que es un hijo que se desborda, siendo esta una imagen cuadrada, se le quice que TODO DESBORDE que se OCULTE. Y de esta manera la imagen del encabezado toma la forma de radio también
+  overflow: hidden;
+  // Se le da una sombra en x, luego y, luego blur y el color donde sea usa un rgba, donde el último valor (a) es la opacidad
+  box-shadow: 2px 2px 15px rgb(0, 0, 0, 0.5);
+  // A partir de aquí se usará sas, como se está dentro de card, y se quiere acceder a un elemento dentro de card (padre), se pone ampersan luego el guión que une a la subclase (hijo), ejemplo: card-header = &-header, por lo tanto, se afectará a la subclase (hijo) card-header de la clase card (padre)
+  &-header {
+    // Se le da un ancho del 100%
+    width: 100%;
+    // Es como se va vizualizar el elemento, se pone block ya que no tiene elementos que organizar, no tiene hijos, es solo un encabezado que está arriba, así que se le dice que invada la pantalla en bloque, si tuviera hijos, sería flex
+    display: block;
+  }
+  // Ahora, se le da estilo al hijo card-body = &-body
+  &-body {
+    // Para la vizualización del elemento, será flex. El elemento se comporta como un elemento de bloque y establece su contenido de acuerdo con el modelo de flexbox
+    display: flex;
+    // Y como se quiere que los elementos estén como columna
+    flex-direction: column;
+    // Para que los elementos queden centrados, debe de hacerse en el padre inmediato de contentimg, que es card-body y se alinean sus elementos
+    align-items: center;
+    // Se quiere tener un borde en la parte de abajo de 1 px sólido y se usa un color de las variables
+    border-bottom: 1px solid var(--color2);
+    // Ahora, se accede al elemento que contiene la imagen, que será: card-body-contentimg = &-contentimg que es el hijo inmediato de card-body
+    &-contentimg {
+      // Se le pone un borde a la imagen
+      border: 5px solid #f67c55;
+      // Se le da un borde curvo del 50%, es decir, se hace una corcuenferencia
+      border-radius: 50%;
+      // Se le da color de fondo
+      background-color: #fcd3c6;
+      // Se le da una sombra en la parte de arriba
+      box-shadow: 0px -10px 20px #f67c55;
+      // Se quiere desplzar hacia arriba tanto el contenedor como la imagen, por lo mismo se hace en esta clase de contentimg y no en la clase hijo de img, sino solo se desplazaría la imagen y no el contenedor, para eso se usa un margen arriba, y se usa valores negarivos para quitarle margen, se le quita 50 y se le quita 8
+      margin-top: calc(-50px - 8px);
+      // Ahora, se accede a la imagen persé, en este caso es hija de card-body-contentimg y en este caso sería: card-body-contentimg-img que es &-img
+      &-img {
+        // Se le da un relleno para que no quede tan pegado al borde
+        padding: 20px;
+      }
+    }
+    // Se accede al texto Charizard
+    &-title {
+      // Se le da un margen arriba
+      margin-top: 2rem;
+      // Y se modifica el tamaño de la fuente
+      font-size: 3rem;
+      // Se accede al span que está dentro del title
+      span {
+        // Se quiere utilizar el color2 declarado en el root usando var
+        color: var(--color2);
+      }
+    }
+  }
+  // Ahora, se le dará estilo a los atributos
+  &-footer {
+    // Primero, se le da la organización a sus elementos de izq a der
+    display: flex;
+    // Se centran los elementos de manera que se distribuyan equitativamente, eso se hace con space-around
+    justify-content: space-around;
+    // Ahora, se accede a los hijos, en este caso son cada atributo, poder, resistencia y bonus
+    &-power {
+      // Se alinean los elementos al centro
+      text-align: center;
+      // Se le da margen, ya que los elementos están muy pegados abajo
+      margin-bottom: 2rem;
+      // Se le da margen, ya que los elementos están muy pegados arriba
+      margin-top: 2rem;
+    }
+  }
+}

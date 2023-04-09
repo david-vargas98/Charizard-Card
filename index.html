@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Pokemon</title>
+    <link rel="stylesheet" href="CSS/Styles.css">
+    <link rel="shortcut icon" href="img/charizard.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Por buenas practicas, ya que lo pide el standar, todo lo contenido en la página, debe de ir dentro de un Main -->
+    <main class="container">
+        <!-- Se usa un article ya que solo hay un elemento, si fueran más, se usaría section -->
+        <article class="card">
+            <!-- Se agrega la imagen del encabezado -->
+            <img src="img/fondoencabezado.svg" alt="Fondo-Encabezado" class="card-header">
+            <!-- Se usa un div para seccionar -->
+            <div class="card-body">
+                <!-- Esta nueva divisióon tendrá el contenido de la imagen, es importante, ya que contendrá un borde la iamgen -->
+                <div class="card-body-contentimg">
+                    <!-- Se agrega a el Pokemon -->
+                    <img src="img/charizard.png" alt="Charizard" class="card-body-contentimg-img" width="150">
+                </div>
+                <!-- Ahora, se pone un título donde irá el nombre del Pokemon -->
+                <h1 class="card-body-title">
+                    Charizard
+                    <!-- Se necesita un texto que vaya a la derecha, por eso se usa span -->
+                    <span>#26</span>
+                </h1>
+                <p class="card-body-text">
+                    coleccionable
+                </p>
+            </div>
+            <!-- Se establece el pie de pagina de la carta -->
+            <div class="card-footer">
+                <div class="card-footer-power">
+                    <h3>Poder</h3>
+                    <img src="img/fuego.png" alt="Fuego" width="35">
+                </div>
+                <!-- Se repite la clase para los demás atributos del Pokemon -->
+                <div class="card-footer-power">
+                    <h3>Resistencia</h3>
+                    <img src="img/castillo.png" alt="Castillo" width="35">
+                </div>
+                <!-- Última repetición de la clase -->
+                <div class="card-footer-power">
+                    <h3>Bonus</h3>
+                    <img src="img/cofre.png" alt="Fuego" width="35">
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
